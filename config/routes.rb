@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  # Dashboard routes
+  get "dashboard", to: "dashboard#index"
+
   # Defines the root path route ("/")
-  root "users#new"
+  root "dashboard#index"
 end

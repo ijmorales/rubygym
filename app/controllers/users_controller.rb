@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_path, notice: "Registro exitoso! Bienvenido #{@user.name}"
+      redirect_to dashboard_path, notice: "Registro exitoso! Bienvenido #{@user.name}"
     else
       render :new, status: :unprocessable_entity
     end
