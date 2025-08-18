@@ -1,0 +1,67 @@
+<div class="container mt-5 mb-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow">
+        <div class="card-body p-4">
+          <h2 class="card-title text-center mb-4">Crear Cuenta</h2>
+
+          <%= form_with model: @user, local: true do |form| %>
+            <% if @user.errors.any? %>
+              <div class="alert alert-danger" role="alert">
+                <h6 class="alert-heading">
+                  <%= pluralize(@user.errors.count, "error") %>
+                  impidieron guardar el registro:
+                </h6>
+                <ul class="mb-0">
+                  <% @user.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="mb-3">
+              <%= form.label :name, "Nombre", class: "form-label" %>
+              <%= form.text_field :name, class: "form-control", placeholder: "Tu nombre completo" %>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :email, "Correo Electrónico", class: "form-label" %>
+              <%= form.email_field :email,
+                               class: "form-control",
+                               placeholder: "ejemplo@correo.com" %>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :password, "Contraseña", class: "form-label" %>
+              <%= form.password_field :password,
+                                  class: "form-control",
+                                  placeholder: "Mínimo 6 caracteres" %>
+              <div class="form-text">La contraseña debe tener al menos 6 caracteres</div>
+            </div>
+
+            <div class="mb-4">
+              <%= form.label :password_confirmation, "Confirmar Contraseña", class: "form-label" %>
+              <%= form.password_field :password_confirmation,
+                                  class: "form-control",
+                                  placeholder: "Repite tu contraseña" %>
+            </div>
+
+            <div class="d-grid">
+              <%= form.submit "Registrarse", class: "btn btn-primary btn-lg" %>
+            </div>
+          <% end %>
+
+          <hr class="my-4">
+
+          <div class="text-center">
+            <p class="mb-0">¿Ya tienes cuenta?
+              <%= link_to "Inicia sesión aquí", login_path, class: "text-decoration-none" %>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
